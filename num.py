@@ -88,7 +88,9 @@ async def auto_refresh_auth_key ():
         await asyncio .sleep (2 )
 
 
-def fetch_authkey ()->str |None :
+from typing import Optional
+
+def fetch_authkey () -> Optional[str]:
     """
     Fetches the encrypted auth key from the API and returns the decrypted key.
     """
@@ -118,7 +120,7 @@ def fetch_authkey ()->str |None :
         return None 
 
 
-def decrypt_key (encrypted_str :str )->str |None :
+def decrypt_key(encrypted_str: str) -> Optional[str]:
     """
     Decrypts the base64 encoded AES encrypted key.
     """
@@ -141,7 +143,7 @@ def decrypt_key (encrypted_str :str )->str |None :
         return None 
 
 
-def get_auth_key ()->str |None :
+def get_auth_key() -> Optional[str]:
     """
     Returns the current value of the global AUTH_KEY.
     Relies on the background task `auto_refresh_auth_key` to keep it updated.
